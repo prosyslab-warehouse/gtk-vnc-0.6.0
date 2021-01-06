@@ -1,0 +1,88 @@
+# Japanese translation for gtk-vnc.
+# Copyright (C) 2010 gtk-vnc's COPYRIGHT HOLDER
+# This file is distributed under the same license as the gtk-vnc package.
+# Takeshi AIHANA <takeshi.aihana@gmail.com>, 2010.
+# Shushi Kurose <md81bird@hitaki.net>, 2010.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gtk-vnc master\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gtk-"
+"vnc&component=general\n"
+"POT-Creation-Date: 2010-08-20 18:14+0000\n"
+"PO-Revision-Date: 2010-08-23 01:31+0900\n"
+"Last-Translator: Shushi Kurose <md81bird@hitaki.net>\n"
+"Language-Team: Japanese <gnome-translation@gnome.gr.jp>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: ../src/vncdisplay.c:147
+msgid "Enables debug output"
+msgstr "デバッグ出力を有効にする"
+
+#: ../src/vncdisplay.c:2141
+msgid "GTK-VNC Options:"
+msgstr "GTK-VNC オプション:"
+
+#: ../src/vncdisplay.c:2141
+msgid "Show GTK-VNC Options"
+msgstr "GTK-VNC オプションを表示"
+
+#~ msgid "Address family for hostname not supported"
+#~ msgstr "ホスト名のアドレスファミリはサポートされていません"
+
+#~ msgid "Temporary failure in name resolution"
+#~ msgstr "名前解決に一時的に失敗しました"
+
+#~ msgid "Bad value for ai_flags"
+#~ msgstr "ai_flags の値が正しくありません"
+
+#~ msgid "Non-recoverable failure in name resolution"
+#~ msgstr "名前解決で回復できない失敗です"
+
+#~ msgid "ai_family not supported"
+#~ msgstr "ai_family がサポートされていません"
+
+#~ msgid "Memory allocation failure"
+#~ msgstr "メモリ割り当てエラー"
+
+#~ msgid "No address associated with hostname"
+#~ msgstr "ホスト名がアドレスに関連づけられていません"
+
+#~ msgid "Name or service not known"
+#~ msgstr "名前またはサービスが見つかりません"
+
+#~ msgid "Servname not supported for ai_socktype"
+#~ msgstr "ai_socktype では Servname はサポートされていません"
+
+#~ msgid "ai_socktype not supported"
+#~ msgstr "ai_socktype はサポートされていません"
+
+#~ msgid "System error"
+#~ msgstr "システムエラー"
+
+#~ msgid "Argument buffer too small"
+#~ msgstr "引数バッファが小さすぎます"
+
+#~ msgid "Processing request in progress"
+#~ msgstr "要求を処理しています"
+
+#~ msgid "Request canceled"
+#~ msgstr "要求がキャンセルされました"
+
+#~ msgid "Request not canceled"
+#~ msgstr "要求はキャンセルされていません"
+
+#~ msgid "All requests done"
+#~ msgstr "全ての要求が完了しました"
+
+#~ msgid "Interrupted by a signal"
+#~ msgstr "シグナルによる割り込みです"
+
+#~ msgid "Parameter string not correctly encoded"
+#~ msgstr "パラメータの文字列が正しくエンコードされていません"
+
+#~ msgid "Unknown error"
+#~ msgstr "不明なエラー"

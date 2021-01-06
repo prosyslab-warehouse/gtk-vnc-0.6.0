@@ -1,0 +1,500 @@
+    GTK VNC News
+    ============
+
+Aug 18, 2016: Release 0.6.0
+===========================
+
+Important changes:
+
+ o Default to build with GTK-3, use --with-gtk=2.0 to override
+
+New features:
+
+ o Add --with-tls-priority configure flag to set default TLS
+   priority string
+ o Add a 'vnc-error' signal to report reason for disconnect
+ o Add support for fallback to GNUTLS system trust DB
+
+Bug fixes:
+
+ o Fix crash on Windows with GTK3 checking realized state
+ o Fix XKB detection of keyboard mapping with Xwayland
+ o Switch back to XKB detection for Xwayland
+ o Remove duplicate cert expiry check
+ o Avoid misc compile warnings
+ o Add missing API docs + GObject introspection annotations
+ o Add missing GIO dep on gvnc library GObject introspection build
+ o Remove unused code
+ o Fix redraw on Win10
+ o Drop support for gnutls < 2.2.0
+ o Fix path to h2def script
+ o Update compiler warning detection to fix clang build
+ o Ignore cast align warnings to fix clang build
+ o Fix endianess inversion when setting pixel format
+
+Feb 10, 2015: Release 0.5.4
+===========================
+
+Bug fixes:
+
+ o Fix auth when using PLAIN SASL method
+ o Fix introspection build support on FreeBSD
+ o Remove use of deprecated GTK_STOCK_* constants
+ o Fix parallel build for introspection files
+ o Add mising dep on Gtk introspection file
+ o Release held keys when getting grab notify
+ o Updated translations
+ o Don't call into GDK if no GdkWindow is realized
+ o Chain up parent realize_event vfunc
+ o Fix colourmap mode by always sending pixel format message
+ o Update GCC compiler warning flags used
+ o Enable double buffering on Gtk3 to fix child widget clipping
+ o Disable -Wbad-function-cast to avoid glib header warnings
+ o Don't set thread callbacks on gcrypt >= 1.6 or gnutls >= 2.12
+ o Do explicit check for gcrypt since gnutls might use nettle
+ o Add support for Wayland & Xwayland keymaps
+ o Add support for Gtk Broadway backend keymaps
+ o Fix AltGr handling on Windows displays
+ o Fix virtual keycode conversion on Win32
+ o Fix USB/HID scsancodes for volume keys
+
+Sep 18, 2013: Release 0.5.3
+===========================
+
+New features:
+
+ o Support QEMU LED state extension
+
+Bug fixes:
+
+ o Time out connection attempt after 10 seconds
+ o Abort if out of memory when mmap'ing coroutine stack
+ o Stop leaking coroutine stack memory
+ o Improve perfornmance of ZRLE encoding by avoiding memmove
+ o Only trigger keyboard grab sequence upon key release to
+   allow modifiers to go to the remote server
+ o Avoid busy loop upon I/O error which follows blocking I/O,
+   commonly seen when a server drops the connection
+ o Fix handling of --no-undefined flag
+ o Don't break implicit pointer grab from mouse clicks
+ o Don't drop mouse events that are out of bounds, clamp their
+   coordinates instead
+ o Show how to block all accelerators in gvncviewer demo program
+
+Feb 22, 2013: Release 0.5.2
+===========================
+
+Removed features:
+
+ o Browser plugin is deleted, since it was unmaintained.
+   Recommend that people use a pure HTML5 impl like noVNC
+   to avoid security problems inherant in native plugins.
+
+Bug fixes:
+
+ o Misc fixes to RPM specfiles
+ o Update translations
+ o Fix big-endian support in cairo framebuffer
+ o Avoid out of bounds accessing arrays
+ o Fix win32 quote key mapping
+ o Fix NULL dereference in logging code
+ o Fix OOM check in python bindings
+ o Avoid array overrun in colourmap mode
+ o Fix buffer space check when sending data
+ o Add introspection annotation for vnc_display_send_keys
+ o Fix pulseaudio enablement in demo
+ o Avoid crash with unsupported audio formats
+ o Turn off deprecation warnings
+ o Convert VncConnectionCredential to VncDisplayCredential
+ o Add API to allow access to keysyms from introspected bindings
+
+
+July 12, 2012: Release 0.5.1
+============================
+
+New features:
+
+ o New API for connecting to a GSocketAddress * object
+ o New API to allow specification of a hostname with
+   a pre-opened file descriptor
+ o Support for UNIX domain sockets in gvncviewer demo
+ o More translations
+
+Bug fixes:
+
+ o Fix building with newer glibc-headers and -O0
+ o Fix GIR building by linking against libgvnc
+   from builddir
+ o Fix deprecation warnings when building against
+   glib >= 2.32
+ o Switch to using mingw64 toolchain for Win32 builds
+ o Fix introspection of key grab APIs
+ o Ensure debugging works with GLib >= 2.32
+ o Allow explicit control over pulseaudio building
+ o Add check for Perl  Text::CSV when building from GIT
+ o Fix POD syntax in gvnccapture man page
+ o Reduce excessive stack usage in vncconnection.c
+
+Dec 21, 2011: Release 0.5.0
+===========================
+
+New features:
+
+ o QEMU audio extension support
+
+Bug fixes:
+
+ o Avoid deprecated GNUTLS functions
+ o Allow access to VncConnection object inside VncDisplay
+ o Don't override PKG_CONFIG_PATH when building GIR files
+ o Death to all TABs
+ o General code style/indentation cleanup
+ o Fix memory leak in keymap code
+ o Fix mapping of shift key in Windows
+
+
+Nov 10, 2011: Release 0.4.4
+===========================
+
+New features:
+
+ o Vala bindings
+
+Bug fixes:
+
+ o Missing OS-X keymapping for the letter 'A'
+ o Update Turkish/Esperanto/Korean/Slovak translations
+ o Mapping for Left Control / Alt keys
+ o Fix leak of string list in grab sequence string
+ o Fix introspection for vnc_display_get_pixbuf
+ o Fix GTK3 build on Mingw32
+ o Improved log messages for TLS auth subtypes
+
+
+Feb 18, 2011: Release 0.4.3
+===========================
+
+New features:
+
+ o None
+
+Bug fixes:
+
+ o Fix crash in pointer motion event handler
+ o Fix crash in vnc_display_get_pixbuf
+ o Fix crash in TLS cleanup code
+ o Fix frambuffer boundary checks
+ o Improve drawing performance with server side pixmap
+ o Fix performance degradation due to leaked GSource
+ o Fix setting of 'shared' connection flag
+ o Make pointer warp boundary detection more robust
+ o Adapt keymap code to build with GDK3 multiple displays
+ o Remove use of gdk_drawable calls to fix GTK3
+
+Code cleanup:
+
+ o Remove need for Text::CSV perl module at build time
+
+Nov  3, 2010: Release 0.4.2
+===========================
+
+New features:
+
+ o OS-X VNC authentiction scheme
+ o Add API to query library version
+
+Bug fixes:
+
+ o Disable extended key events if display keymap
+   cannot be determined
+ o Rewritten keymap code to work on non-Xorg
+   servers and native OS-X/Win32 GTK backends.
+ o Many more language translations
+ o Strict bounds checking on all framebuffer updates
+ o Fixed parameter for vnc-server-cut-text signal
+ o Fixed build with latest GTK3 development snapshot
+
+Code cleanup:
+
+ o Switched over to GIO for socket connections
+ o Removed all use of GNULIB now GIO handles all
+   portability issues with sockets.
+ o Mandate use of Cairo for all drawing, removing
+   any use of GdkPixmap, GdkImage, GdkBitmap.
+
+Jul 14, 2010: Release 0.4.1
+===========================
+
+Bug fixes:
+
+ o Fix test suite execution
+ o Ensure builds against GTK3 get a separate library soname,
+   pkg-config file and include directory to allow parallel
+   install with GTK2 builds.
+
+Jul 11, 2010: Release 0.4.0
+===========================
+
+Bug fixes:
+
+ o Fix protocol greeting so wireshark detects stream
+ o Fix build with GSEAL
+ o Try next DNS address after any connect failure
+ o Plugin build with newer mozilla
+ o Fix linkage to libgpg-error
+ o Fix linker flags on solaris
+ o Fix gcrypt threading callbacks
+ o Fix multiple memory leaks
+ o Remove use of PATH_MAX to fix Hurd
+
+New features:
+
+ o Refactored gvnc module to provide a full GObject
+   for interacting with the RFB protcol.
+ o Create a libgvnc.so for non-GTK related APIs for
+   dealing with RFB protcol
+ o Add gvnccapture command line tool for screenshot
+   capture
+ o Many updated translations
+
+
+Oct 20, 2009: Release 0.3.10
+============================
+
+Bug fixes:
+
+ o Fix check for SASL on Solaris
+ o Improvements on autoconf stuff such as drop some warnings, use silent
+   Makefile rules, etc.
+ o Improvements on the example program
+ o Request a full screen update when receives a desktop-resize encoding
+
+New features:
+
+ o Add internationalization (i18n) support
+ o Add ability to set the depth color
+ o Add ability to request a full screen update
+
+Translations:
+
+ o António Lima (pt)
+ o Claude Paroz (fr)
+ o Daniel Nylander (sv)
+ o Fran Diéguez (gl)
+ o Gabor Kelemen (hu)
+ o Henrique P. Machado (pt_BR)
+ o Inaki Larranaga (eu)
+ o Jonh Wendell (pt_BR)
+ o Jorge González (es)
+ o Luca Ferretti (it)
+ o Mario Blättermann (de)
+ o Pavlos Tournaris (el)
+ o Philip Withnall (en_GB)
+ o Piotr Drąg (pl)
+
+Aug 10, 2009: Release 0.3.9
+===========================
+
+Bug fixes:
+
+ o Fix Shift+Tab keyval translation (again)
+ o Remove use of deprecated GTK+ symbols
+ o Fix inverted logic for release pointer grab
+ o Fix enter/leave event handling in relative mouse mode
+ o Don't send keys/clipboard data in readonly mode
+ o Fix relative mouse motion mode edge tracing
+ o Fix linking to libgcrypt for mingw32 platform
+
+New features:
+
+ o Add API to get command line GOptionEntry objects
+ o Support SASL authentication extension
+ o Support MS Logon authentication extension
+
+Dec 7, 2008: Release 0.3.8
+==========================
+
+Bug fixes:
+
+ o Fix threads based coroutine locking
+ o Switch to alternate d3des code for clarity in
+   licensing terms
+ o Re-write keycode handling to improve correctness on
+   non-US keyboard layouts
+ o Fix keycode to scancode translation for evdev keyboard
+   driver
+ o Save dimensions when getting desktop resize events
+ o Avoid bogus framebuffer updates from psuedo-encodings
+ o Always allow key ungrab if keyboard grab is active
+
+New features:
+
+ o Use Cairo for scaling support instead of OpenGL
+ o Ported to compile & run under Win32/MinGW
+
+Sep 5, 2008: Release 0.3.7
+==========================
+
+Bug fixes:
+
+ o Ungrab pointer if widget looses focus (Daniel Berrange)
+ o Set a pixmap format if server does not default to true
+   colour mode  (Jonh Wendell)
+ o Misc fixes to prevent crash  (Jonh Wendell)
+ o Register internal signal handlers against class instead
+   of per object (Daniel berrange)
+
+New features:
+
+ o Add API to allow down-scaling to be enabled (Jonh Wendell)
+
+May 5, 2008: Release 0.3.6
+==========================
+
+Bug fixes:
+
+ o Fix gcc warnings (Atushi SAKAI)
+ o Use regex for symbol visibility on Solaris (Halton Huo)
+ o Fix crash when closing connection during update (Jonh Wendell)
+ o Use glib memory functions
+
+New features:
+
+ o Provide interface to control shared flag (Jonh Wendell)
+ o Support preferred authentication types (Jonh Wendell)
+
+Apr 6, 2008: Release 0.3.5
+==========================
+
+Bug fixes:
+
+ o Use g_malloc/g_strdup/g_free (Jonh Wendell)
+ o Fix z-buffer depth when using scaling (Dan Berrange)
+ o Fix makecontext() for 64-bit hosts (Dan Berrange)
+ o Fix more endianness issues (Dan Berrange)
+ o Fix various compile warnings (Atsushi SAKAI)
+ o Be more flexible in protocol version negotation (Jonh Wendell, Jin Choi)
+ o Work-arounds for ISO_Left_Tab (Hiroyuki Kaguchi)
+ o Propagate ke press events (Anthony Liguori)
+
+New features:
+
+ o Use glib for debugging and always enable it (Jonh Wendell)
+ o GObject properties (Jonh Wendell)
+ o Accessor to determine if we're in absolute mode (Anthony Liguori)
+
+
+Mar 5, 2008: Release 0.3.4
+==========================
+
+Bug fixes:
+
+ o Fix cursor visibility when in relative pointer mode (Anthony Liguori)
+ o Fix vnc_auth_credential signal marshalling (Anthony Liguori, Saori Fukuta)
+ o Add missing break in key event handling (Marton Balint)
+ o Various build cleanups (Atsushi SAKAI)
+ o Fix key event tracking (Daniel Berrange)
+ o Fix big endian color conversion (Hiroyuki Kaguchi)
+ o More debug messages (Jonh Wendell)
+ o Add interface to explicitly force pointer grab (Anthony Liguori)
+ o Always emit signals from system coroutine (Anthony Liguori)
+ o Revert to 0.3.3 set_pointer_grab behavior (Anthony Liguori)
+ o spec file updates and configure support for Fedora 9 (Dan Berrange)
+
+New features:
+
+ o Focus widget on mouse click (Jonh Wendell)
+ o WMVi support (Stefano Stabellini)
+ o OpenGL based scaling (Anthony Liguori, Daniel Berrange)
+ o VNC scancode extension (Anthony Liguori)
+
+Feb 2, 2008: Release 0.3.3
+==========================
+
+Bug fixes:
+
+ o Track keystates to reset keyboard state on focus out (Daniel Berrange)
+ o Fix SEGV in vnc_display_close (Rich Jones)
+ o Compiler fixes for suncc (Halton Huo)
+ o More UltraVNC compatibility (Rich Jones)
+ o Big endian fixes (Anthony Liguori)
+ o Hide password characters in gvncviewer (Rich Jones)
+ o More debug on protocol error (Jonh Wendell)
+ o Fix SEGV on coroutine free (Anthony Liguori)
+ o Fix ZRLE encoding (Atsushi SAKAI)
+
+New features:
+
+ o Support got Tight encoding (Anthony Liguori)
+ o Mozilla browser plugin (Rich Jones)
+ o Output configure summary (Jonh Wendell)
+
+Dec 31, 2007: Release 0.3.2
+===========================
+
+Bug fixes:
+
+This release fixes a bug in the python bindings whereas send_keys() was not
+always returning a value.  It also fixed a bug in how mouse events get
+propagated and ensures that the right number of encodings are sent to the
+server.  This release also fixes the RichCursor encoding when the server is
+using a depth of less than 24.
+
+New features:
+
+A new interface was added (vnc_display_send_keys_ex) for passing key press and
+key release sequences directly and for sending pointer events directly
+(vnc_display_send_pointer).  Another interface was added
+(vnc_display_set_read_only) to prevent the user from being able to send any
+input at all to the server.  Support for the RRE encoding was added along
+with a GThread-based coroutine implementation to improve portability.  ZRLE
+support was also added.
+
+Dec 13, 2007: Release 0.3.1
+===========================
+
+Bug fixes:
+
+Fix build so that generated tarball contains all the necessary files after a
+make dist.
+
+Dec 12, 2007: Release 0.3.0
+===========================
+
+Bug fixes:
+
+This release fixes a number of build issues on Solaris.  It
+also fixes cursor grabbing, a potential race during connect(),
+an SELinux error, and race condition in the coroutine library.
+
+New features:
+
+Interfaces for bell messages and the clipboard are now supported.
+RFB 3.4 is now supported for increased compatibility with UltraVNC.
+
+Sep 13, 2007: Release 0.2.0
+===========================
+
+Bug fixes:
+
+This release fixes compatability with mixed endianess client
+and servers and BGR/RGB pixel format displays. Mixed colour
+depths are now correctly accounted for & converted appropriately.
+Graceful shutdown is now handled correctly, interrupting any
+pending I/O waits. Added destructor to widget to ensure all
+resources are free'd when the widget is deleted.
+
+New features:
+
+The two common client cursor offload extensions are supported
+for compatability with OSX-VNC, UltraVNC and TightVNC. Support
+for Vino's TLS authentication method is added. Added signals
+for getting notified of desktop resize events, and authentication
+failures.
+
+Aug 15, 2007: Release 0.1.0
+===========================
+
+Initial public release
+
+-- End
